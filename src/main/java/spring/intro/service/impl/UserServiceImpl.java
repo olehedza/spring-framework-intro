@@ -1,11 +1,11 @@
 package spring.intro.service.impl;
 
+import java.util.List;
 import org.springframework.stereotype.Service;
 import spring.intro.dao.UserDao;
 import spring.intro.model.User;
 import spring.intro.service.UserService;
 import spring.intro.util.HashUtil;
-import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
