@@ -46,8 +46,20 @@ public class UserDaoImpl implements UserDao {
     public List<User> listUsers() {
         try (Session session = sessionFactory.openSession()) {
             Query<User> userQuery = session
-                    .createQuery("select u from User AS u", User.class);
+                    .createQuery("select u from User as u", User.class);
             return userQuery.getResultList();
+        } catch (Exception e) {
+            throw new DatabaseConnectionException("Can't get list of users", e);
+        }
+    }
+
+    @Override
+    public User getById(Long id) {
+        try (Session session = sessionFactory.openSession()) {
+            Query<User> userQuery = session
+                    .createQuery("select u from User as u where u.id = :id", User.class);
+            userQuery.setParameter("id", id);
+            return userQuery.getSingleResult();
         } catch (Exception e) {
             throw new DatabaseConnectionException("Can't get list of users", e);
         }
