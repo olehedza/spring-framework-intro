@@ -61,7 +61,7 @@ public class UserDaoImpl implements UserDao {
             userQuery.setParameter("id", id);
             return userQuery.getSingleResult();
         } catch (Exception e) {
-            throw new DatabaseConnectionException("Can't get list of users", e);
+            throw new DatabaseConnectionException("Can't get user", e);
         }
     }
 }
